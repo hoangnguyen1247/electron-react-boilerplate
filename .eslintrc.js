@@ -1,26 +1,33 @@
 module.exports = {
-  extends: 'erb',
-  rules: {
-    // A temporary hack related to IDE not resolving correct package.json
-    'import/no-extraneous-dependencies': 'off',
-  },
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
-    createDefaultProgram: true,
-  },
-  settings: {
-    'import/resolver': {
-      // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
-      node: {},
-      webpack: {
-        config: require.resolve('./.erb/configs/webpack.config.eslint.js'),
-      },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+    "env": {
+        "es6": true,
+        "browser": true,
+        "jest": true,
+        "node": true
     },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-  },
+    "rules": {
+        "react/react-in-jsx-scope": 0,
+        "react/display-name": 0,
+        "react/prop-types": 0,
+        "react/jsx-key": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/explicit-member-accessibility": 0,
+        "@typescript-eslint/member-delimiter-style": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/no-use-before-define": 0,
+        "@typescript-eslint/no-unused-vars": [ 2, { "args": "none" } ],
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "@typescript-eslint/no-empty-interface": 0,
+        "@typescript-eslint/indent": [2, 4],
+        "@typescript-eslint/quotes": [2, "double"],
+        "@typescript-eslint/semi": [2, "always"],
+        "object-curly-spacing": [ 2, "always" ],
+        "eol-last": [ 2, "always" ],
+        "no-console": 0,
+        "no-prototype-builtins": 0
+    }
 };
